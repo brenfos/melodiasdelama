@@ -1,4 +1,3 @@
-
 const contenedorProductos = document.getElementById('contenedor-productos');
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 const botonVaciar = document.getElementById('vaciar-carrito');
@@ -7,21 +6,52 @@ const cantidad = document.getElementById('cantidad');
 const precioTotal = document.getElementById('precioTotal');
 const cantidadTotal = document.getElementById('cantidadTotal');
 
-
-
-
-
 let carrito = [];
 var selector = null;
 
+fetch('http://localhost:8080/stock.json')
+.then(response => response.json())
+.then(data => {
+    stockBaterias = data.stockBaterias;
+    stockGuitarras = data.stockGuitarras;
+    stockPianos = data.stockPianos;
 
+    const botonTodos = document.getElementById('todos');
+    const botonGuitarras = document.getElementById("guitarras");
+    const botonesBaterias = document.getElementById('baterias');
+    const botonesPianos = document.getElementById('pianos');
+
+    botonTodos.addEventListener('click', () => {
+        selector = null;
+        vaciarDiv();
+        loadElements();
+    })
+    
+    botonGuitarras.addEventListener('click', () => {
+        selector = 0;
+        vaciarDiv();
+        loadElements();
+    })
+
+    botonesBaterias.addEventListener('click', () => {
+        selector = 1;
+        vaciarDiv();
+        loadElements();
+    })
+
+    botonesPianos.addEventListener('click', () => {
+        selector = 2;
+        vaciarDiv();
+        loadElements();
+    })
+
+    loadElements();
+})
 
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
     actualizarCarrito()
 })
-
-
 
 function loadElements(){
     switch(selector){
@@ -53,12 +83,14 @@ function loadElements(){
                 button.setAttribute('id', `agregar${producto.id}`);
                 button.innerHTML = `Agregar <i class="fas fa-shopping-cart"></i>`;
                 div.appendChild(button);
+                
 
                 contenedorProductos.appendChild(div)
                    
                 button.addEventListener('click', () => {
-            
+                    
                     agregarAlCarrito(producto.id, 0)
+                    
                 
                 })
             })
@@ -174,8 +206,9 @@ function loadElements(){
                 contenedorProductos.appendChild(div)
                    
                 button.addEventListener('click', () => {
-            
-                    agregarAlCarrito(producto.id, 0)
+                    
+                    setSwal();
+                    agregarAlCarrito(producto.id, 0);
                 
                 })
             })
@@ -248,6 +281,7 @@ function loadElements(){
                 button.addEventListener('click', () => {
             
                     agregarAlCarrito(producto.id, 2)
+                    
                 
                 })
             })
@@ -260,44 +294,6 @@ function vaciarDiv(){
     var contenedor = document.getElementById("contenedor-productos");
     contenedor.innerHTML = '';
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadElements();
-
-    const botonTodos = document.getElementById('todos');
-    const botonGuitarras = document.getElementById("guitarras");
-    const botonesBaterias = document.getElementById('baterias');
-    const botonesPianos = document.getElementById('pianos');
-
-    botonTodos.addEventListener('click', () => {
-        selector = null;
-        vaciarDiv();
-        loadElements();
-    })
-    
-    botonGuitarras.addEventListener('click', () => {
-        selector = 0;
-        vaciarDiv();
-        loadElements();
-    })
-
-    botonesBaterias.addEventListener('click', () => {
-        selector = 1;
-        vaciarDiv();
-        loadElements();
-    })
-
-    botonesPianos.addEventListener('click', () => {
-        selector = 2;
-        vaciarDiv();
-        loadElements();
-    })
-
-    
-})
-
-
-
 
 const agregarAlCarrito = (prodId, typeId) => {
 
@@ -371,7 +367,10 @@ const actualizarCarrito = () => {
   
     console.log(carrito)
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
-  
+    
+    
+  function setSwal(){
+    swal('Carrito de Compras','Producto agregado correctamente.', 'success');
+
+  }
 }
-
-

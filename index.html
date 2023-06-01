@@ -11,15 +11,16 @@
     <script defer src="stock.js"></script>
     <script defer src="modal.js"></script>
     <script defer src="app.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap" rel="stylesheet">
-    
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap" rel="stylesheet">
+ </head>
+ 
 <body>
     <header>
         <h1>Melodías del Alma</h1>
@@ -27,12 +28,11 @@
     </header>
     <nav>
         <ul class="menu">
-            <li><a href=""></a>
+            <li>
                 <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill">Todos los productos</i></button>
             </li>
             <li>
                 <button id="guitarras" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb">Guitarras</i></button>
-                
             </li>
             <li>
                 <button id="baterias" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb">Baterías</i></button>
@@ -42,12 +42,12 @@
             </li>
         </ul>
     </nav>
-     <main id="contenedor-productos">
+    <main id="contenedor-productos">
     </main>
     <div class="modal-contenedor">
         <div class="modal-carrito">
             <h3>Carrito de Compra</h3>
-            <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
+            <button id="carritoCerrar" class="modal-cerrar"><i class="fas fa-times-circle"></i></button>
             <div id="carrito-contenedor">
             </div>
             <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
