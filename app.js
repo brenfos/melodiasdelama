@@ -207,8 +207,9 @@ function loadElements(){
                    
                 button.addEventListener('click', () => {
                     
-                    setSwal();
+                   
                     agregarAlCarrito(producto.id, 0);
+                    swal('Carrito de Compras', 'Agregado correctamente al carrito.', 'success');
                 
                 })
             })
@@ -245,6 +246,8 @@ function loadElements(){
                 button.addEventListener('click', () => {
             
                     agregarAlCarrito(producto.id, 1)
+                    swal('Carrito de Compras', 'Agregado correctamente al carrito.', 'success');
+                    
                 
                 })
             })
@@ -281,6 +284,8 @@ function loadElements(){
                 button.addEventListener('click', () => {
             
                     agregarAlCarrito(producto.id, 2)
+                    swal('Carrito de Compras', 'Agregado correctamente al carrito.', 'success');
+
                     
                 
                 })
