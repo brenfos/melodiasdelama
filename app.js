@@ -14,7 +14,7 @@ document.getElementById('baterias').addEventListener('click', () => mostrarProdu
 document.getElementById('pianos').addEventListener('click', () => mostrarProductos(stock[2]));
 botonVaciar.addEventListener('click', vaciarCarrito);
 
-fetch('http://localhost:8080/stock.json')
+fetch('stock.json')
     .then(response => response.json())
     .then(data => {
         stock = [data.stockGuitarras, data.stockBaterias, data.stockPianos];
